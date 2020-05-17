@@ -1,0 +1,41 @@
+.formulario {
+ width: 250px;
+ padding: 100px;
+ margin: auto;
+ display: block;
+ background: #FFF;
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    font-family: 'Public Sans', sans-serif;
+}
+.formulario form{
+margin-top: 25px;
+}
+.texto {
+    width: 110%;
+    padding: 12px;
+    border-radius: 3px;
+    background: transparent /*#E1D0F1*/;
+    margin-bottom: 7px;
+    font-size: 14px;
+    color: #000;
+}
+.radio {
+    width: 5% !important;
+    height: 15px;
+    padding: 10px;
+    margin-top: 10px;
+}
+.edad {
+    width: 28%;
+    height: 28px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+.submit{
+width: 122%;
+padding: 12px;
+background: #E1D0F1;
+cursor: pointer;
+}
