@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-use App\Usuario;
+use App\User;
 
 class UsuarioController extends Controller
 {
@@ -21,7 +21,7 @@ class UsuarioController extends Controller
          'usuario'     =>'required|alpha',
          'nombres'     => 'required|regex:/^[\pL\s\-]+$/u',
          'apellidos'   => 'required|regex:/^[\pL\s\-]+$/u',
-         'correo'      => 'required|email|unique:usuarios',//unique comprueba si existe el usuario
+         'correo'      => 'required|email|unique:users',//unique comprueba si existe el usuario
          'password'   => 'required',
          'rol'         =>'required',
      ]);
@@ -40,16 +40,16 @@ class UsuarioController extends Controller
     $pwd = hash('sha256',$params->password);
 
      //crear el usuario
-    $usuario = new Usuario();
-    $usuario->usuario = $params_array['usuario'];
-    $usuario->nombres = $params_array['nombres'];
-    $usuario->apellidos = $params_array['apellidos'];
-    $usuario->correo = $params_array['correo'];
-    $usuario->password = $pwd;
-    $usuario->rol = $params_array['rol'];
+    $user = new User();
+    $user->usuario = $params_array['usuario'];
+    $user->nombres = $params_array['nombres'];
+    $user->apellidos = $params_array['apellidos'];
+    $user->correo = $params_array['correo'];
+    $user->password = $pwd;
+    $user->rol = $params_array['rol'];
     
        //Guardar el usuario en base de datos
-    $usuario->save();
+    $user->save();
     
        $data = array (
          'status'     => 'success',
@@ -106,7 +106,7 @@ class UsuarioController extends Controller
         $signup = $jwtAuth->signup($params->usuario,$pwd);
         if(!empty($params->getToken)){
 
-          $signup = $jwtAuth->signup($params->usuario,$pwd,true);
+          $signup = $jwtAuth->signup($params->user,$pwd,true);
         }
       }
 
@@ -127,26 +127,27 @@ class UsuarioController extends Controller
 if($checkToken && !empty($params_array)){
     
     //Sacar usuario identificado
-    $usuario = $jwtAuth->checkToken($token,true);
+    $user = $jwtAuth->checkToken($token,true);
     //Validar los datos
     $validate = \Validator::make($params_array,[
-         'nombres'       => 'required|alpha',
-         'apellidos'    => 'required|alpha',
-         'correo'      => 'required|email|unique:usuario,'.$usuario->sub,//unique comprueba si existe el usuario
+         'usuario'     =>'required|alpha',
+         'nombres'     => 'required|regex:/^[\pL\s\-]+$/u',
+         'apellidos'   => 'required|regex:/^[\pL\s\-]+$/u',
+         /*'usuario'      => 'required,'.$usuario->sub,//unique comprueba si existe el usuario*/
     ]);
     //Quitar los datos que no quiero actualizar
     unset($params_array['id']);
-    unset($params_array['role']);
+    unset($params_array['rol']);
     unset($params_array['password']);
     unset($params_array['create_at']);
     unset($params_array['remember_token']);
     //Actualizar usuario en DB
-    $usuario_update =Usuario::where('id', $usuario->sub)->update($params_array);
+    $user_update =User::where('id', $user->sub)->update($params_array);
     //Devolver array con resultado
     $data = array (
         'code'     => 200,
         'status'   =>'success',
-        'usuario'  =>$usuario_update
+        'usuario'  =>$user_update
     );
  
 }else{
@@ -190,9 +191,9 @@ return response()->json($data,$data['code']);
      return response()->json($data,$data['code']);
  }
  public function getImage($filename){
-     $isset = \Storage::disk('usuarios')->exists($filename);
+     $isset = \Storage::disk('users')->exists($filename);
      if ($isset){
-     $file = \Storage::disk('usuarios')->get($filename);
+     $file = \Storage::disk('users')->get($filename);
      return new Response ($file,200);
      }else{
            $data = array (
@@ -205,12 +206,12 @@ return response()->json($data,$data['code']);
 
  }
  public function detail($id){
-     $usuario = Usuario::find($id);
+     $user = User::find($id);
  if(is_object($user)){
      $data = array(
          'code'   =>200,
          'status' =>'success',
-         'user'   =>$usuario
+         'user'   =>$user
          
      );
  }else{

@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\DB;
-use App\Usuario;
+use App\User;
 
 class JwtAuth {
 
@@ -14,29 +14,29 @@ class JwtAuth {
 		$this->key = 'Clave---64678secreta';
 	}
 
-	  public function signup($usuario, $password, $getToken = null){
+	  public function signup($user, $password, $getToken = null){
         
     //Buscar si existe el usuario con las credenciales 
-    $usuario = Usuario::where([
-        'usuario' => $usuario,
+    $user = User::where([
+        'usuario' => $user,
         'password' => $password
     ])->first();
     //Comprobar si son correctas
     $signup = false;
-    if(is_object($usuario)){
+    if(is_object($user)){
         $signup = true;
     }
     //Generar el token con los datos del usuario identificado
     if ($signup){
        $token = array (
 
-           'sub'       => $usuario->id,
-           'usuario'    => $usuario->usuario,
-           'nombres'     => $usuario->nombres,
-           'apellidos'  => $usuario->apellidos,
-           'Correo'  => $usuario->correo,
-           'password'  => $usuario->password,
-           'Rol'  => $usuario->rol,
+           'sub'       => $user->id,
+           'usuario'    => $user->usuario,
+           'nombres'     => $user->nombres,
+           'apellidos'  => $user->apellidos,
+           'Correo'  => $user->correo,
+           'password'  => $user->password,
+           'Rol'  => $user->rol,
            'iat'      => time(), //Inicio de el token de sesion
            'exp'      => time () + (7*24*60*60),//cuando caducaría opcional
        ) ;

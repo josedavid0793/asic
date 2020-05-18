@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::post('/registro','UsuarioController@register');
 Route::post('/login','UsuarioController@login');
+Route::put('/usuario/actualizar','UsuarioController@update');

@@ -9,7 +9,7 @@ class roles extends Model
 
 	protected $table ='roles';
 	
-    public function Usuario(){
-    	return $this->belongsTo('App\Usuario','roles');
+    public function User(){
+    	return $this->belongsTo('App\User','roles');
     }
 }
