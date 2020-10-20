@@ -20,5 +20,13 @@ Route::get('/', function () {
 
 Route::post('/registro','UsuarioController@register');
 Route::post('/login','UsuarioController@login');
+Route::post('/host','HostController@ingreso');
+Route::get('/host/{id}','HostController@editarHostid');
+Route::post('/service','ServicehostController@agregar');
+Route::get('/viewhost','HostController@editarHost');
 Route::put('/usuario/actualizar','UsuarioController@update');
+Route::put('/hostupdate/{id}','HostController@updateHost');
+Route::delete('/host/{id}','HostController@deleteHost');
+Route::get('/hostExport','HostController@exportHost');
+
 

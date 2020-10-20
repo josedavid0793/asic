@@ -12,6 +12,10 @@ export class RegisterComponent implements OnInit {
     public titulo:string;
       public user: User;
       public status:string;
+
+      role:string[]=[
+  "Administrador",
+  "Estándar"];
    constructor(
   private _UserService: UserService
     ) {
@@ -23,7 +27,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     console.log('Componente de registro lanzado!!');
-    console.log(this._UserService.test());
+    /*console.log(this._UserService.test());*/
   }
   //componente declarado en el formulario el onSubmit
   onSubmit(form){

@@ -1,0 +1,89 @@
+
+
+<style type="text/css">
+	.form-as{
+    margin-left: 73%;
+    margin-bottom: 13px;
+    }
+  .input-ac{
+    border-radius: 35px !important;
+  }
+  .btn-de{
+    margin-right:3px;
+  }
+  .btn-up{
+    margin-right:3px;
+  }
+  .btn-upda{
+        width: 102px;
+  }
+  .inp-upd{
+    height: 50px;
+    margin-top: -8px;
+    border:solid 1px #D5D8DC; 
+    border-radius: 11px; 
+  }
+  .wd-es{
+    width: 100px;
+  }
+  .th-accion{
+    width: 16%;
+  }
+  .div-t-table{
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-excel{
+    height: 40px;
+  }
+</style>
+
+
+<div class="container-fluid">
+  <p>{{titulo}}</p>
+  <div class="div-t-table">
+    <form class="form-inline form-as">
+      <input name="buscarpor" class="input-ac form-control mr-sm-2" type="search" placeholder="buscar" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+   </form>
+   <a  class="btn btn-success btn-excel" (click)="exportHost(filename)">EXCEL</a>
+  </div>
+
+
+   <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">IP</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Ambiente</th>
+      <th scope="col">S.O</th>
+      <th scope="col">Escalamiento</th>
+      <th scope="col">Notas</th>
+      <th scope="col" class="th-accion">Acciones</th>
+    </tr>
+  </thead>
+    <tbody>
+    <tr *ngFor='let host_clientes of response'><!---->
+      <th scope="row">{{host_clientes.id}}</th>
+      <td>{{host_clientes.host_name}}</td>
+      <td>{{host_clientes.ip}}</td>
+      <td>{{host_clientes.cliente}}</td>
+      <td>{{host_clientes.ambiente}}</td>
+      <td>{{host_clientes.sistema_operativo}}</td>
+      <td>{{host_clientes.escalamiento}}</td>
+      <td>{{host_clientes.notas}}</td>
+      <td>
+        <a class="btn btn-danger btn-de" (click)="deleteHost(host_clientes.id)">Eliminar</a>
+        <a  class="btn btn-warning btn-up" routerLink="/hostupdate/{{host_clientes.id}}">Actualizar</a>
+        
+      </td>
+    </tr>
+  </tbody>
+
+ </table>
+
+ 
+
+

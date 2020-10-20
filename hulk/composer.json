@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
+        "maatwebsite/excel": "^3.1",
         "rap2hpoutre/laravel-log-viewer": "^1.6"
     },
     "require-dev": {

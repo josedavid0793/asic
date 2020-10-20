@@ -2,9 +2,21 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
 <style type="text/css">
- 
+.fl{
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url("/assets/img/fondo-noc.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
  .btn-asic{
  	color: #000;
+  width: 63%;
+  margin-left: 130px;
  }
  .mar-asic{
     margin-top: 6.5rem !important;
@@ -19,6 +31,33 @@
  	text-align: center;
  	font-family: 'Oswald', sans-serif;
  }
+ .mt-44, .my-4 {
+    margin-top: 4.5rem!important;
+}
+.offset-22 {
+    margin-left: 23.666667%;
+}
+.form-as{
+  margin-left: 54px;
+}
+
+footer{
+    background: #4D5656;
+    padding: 20px 0;
+    margin-top: 25px;
+    text-align: center;
+    width: 100%;
+  }
+  footer .container-footer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  }
+  footer p{
+  color: #fff;
+  margin-top: 40px;
+
+   }
 
 
 @media screen and (max-width: 575px) {
@@ -31,7 +70,8 @@
 
 
 </style>
-<div class="mt-4 col-8 offset-2">
+<div class="container-fluid fl">
+  <div class="mt-44 col-6 offset-22">
   <div class="card">
     <div class="card-header">{{titulo}}</div>
     <div class="card-body">
@@ -42,18 +82,18 @@
  </div>
 
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Usuario</label>
+    <!--<label for="inputEmail3" class="col-sm-2 col-form-label">Usuario</label>-->
     <div class="col-sm-10">
-      <input type="text"  class="form-control" name="usuario"  placeholder="Usuario" #usuario="ngModel" [(ngModel)] = "user.usuario" required="" pattern="[a-zA-Z]+">
+      <input type="text"  class="form-control form-as" name="usuario"  placeholder="Usuario" #usuario="ngModel" [(ngModel)] = "user.usuario" required="" pattern="[a-zA-Z]+">
       <small *ngIf="!usuario.valid && usuario.touched" class="invalid-feedback d-block">
         El usuario no es valido
       </small>
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+    <!--<label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>-->
     <div class="col-sm-10">
-      <input type="password" class="form-control" name="password"  placeholder="Password" #password="ngModel" [(ngModel)] = "user.password" required="">
+      <input type="password" class="form-control form-as" name="password"  placeholder="Password" #password="ngModel" [(ngModel)] = "user.password" required="">
       <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
         La contraseña no es válida
     </small>
@@ -62,11 +102,30 @@
 
   <div class="form-group row">
     <div class="col-sm-10">
-      <input type="submit" value="Ingresa" class="btn btn-primary mb-2" style="background-color: #e3f2fd; color: #000;" [disabled] ="loginForm.invalid">
+      <input type="submit" value="Ingresa" class="btn btn-primary mb-2 btn-asic" style="background-color: #e3f2fd; color: #000;" [disabled] ="loginForm.invalid">
     </div>
   </div>
+  <small class="float-right">
+    <a [routerLink]="['/request-reset']">Restablecer Contraseña</a>  
+  </small>
 </form>
     </div>
   </div>
+
 </div>
+</div>
+  <footer>
+  <div class="container-footer">
+  <div>
+    
+  </div>
+  <div class="parrafo">
+    <p class="footer">Todos lo derechos reservados ASIC 2020</p>
+  </div>
+  </div>
+
+</footer>
+<router-outlet></router-outlet>
+
+
 

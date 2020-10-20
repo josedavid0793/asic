@@ -20,8 +20,8 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/logo_asic1.png",
-              "src/assets/logo_asic1.png"
+              "src/favicon_asic.png",
+              "src/assets"
             ],
             "styles": [
               "src/styles.css",

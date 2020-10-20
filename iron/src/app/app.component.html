@@ -317,7 +317,7 @@
 
 <nav class="navbar navbar-expand-lg  navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand" href="https://asicamericas.com/">
-    <img src="/assets/logo_asic.png" width="65" height="50" class="d-inline-block align-top" alt="Asic">
+    <img  src="/assets/img/logo_asic.png" width="65" height="50" class="d-inline-block align-top" alt="Asic">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -328,6 +328,7 @@
       <li class="nav-item active li-asic">
         <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only">(current)</span></a>
       </li>
+      
 
     </ul>
     <!--UL  a mostrarse antes de loguear-->
@@ -338,13 +339,14 @@
     </ul>
     <!--Fin de UL de Login-->
     
-    <form class="form-inline form-as" *ngIf="identity && identity.usuario">
-       <input class="form-control mr-sm-2 input-as" type="search" placeholder="buscar" aria-label="Search">
-       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
     <ul class="navbar-nav navbar-right" *ngIf="identity && identity.usuario">
       <li class="nav-item active li-asic">
-        <a class="nav-link" [routerLink]="['/login']">Clientes</a>
+        <a class="nav-link" [routerLink]="['/client']">Clientes</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav navbar-right" *ngIf="identity && identity.usuario">
+      <li class="nav-item active li-asic">
+        <a class="nav-link" [routerLink]="['/viewhost']">Host</a>
       </li>
     </ul>
     <ul class="navbar-nav navbar-right" *ngIf="identity && identity.usuario">
@@ -355,7 +357,8 @@
         <div class="dropdown-menu menu-mini" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Mi perfil</a>
           <a class="dropdown-item" [routerLink]="['/registro']">Crear Usuario</a>
-          <a class="dropdown-item" href="#">Cargar Datos</a>
+          <a class="dropdown-item" [routerLink]="['/host']">Cargar Host</a>
+          <a class="dropdown-item" [routerLink]="['/service']">Cargar Servicio</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="['/logout/1']">Cerrar sesión</a>
         </div>

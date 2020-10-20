@@ -1,6 +1,45 @@
+<style type="text/css">
+	.btn-a{
+	margin-left: 35%;
+    width: 50%;
+    padding: 12px;
+	}
+	.title-asic{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+	}
+	.container-fondo{
+    background: #FBFCFC;
+  }
+  span{
+    color: red;
+    margin-left: 4px;
+  }
+  footer{
+    background: #4D5656;
+    padding: 20px 0;
+    margin-top: 25px;
+    text-align: center;
+    width: 100%;
+  }
+  footer .container-footer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  }
+  footer p{
+  color: #fff;
+  margin-top: 40px;
+
+   }
+</style>
+
+<div class="container-fondo">
 <div class="mt-4 col-8 offset-2">
    <div class="card">
-     <div class="card-header">{{titulo}}</div>
+     <div class="card-header title-asic">{{titulo}}</div>
          <div class="card-body">
              <!--<p  *ngIf="status != 'success'">Registrar usuario</p>-->
 
@@ -13,9 +52,9 @@
 
             <form  #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
 	          <div class="form-group row">
-		        <label for="name" class="col-sm-2 col-form-label">Usuario</label>
+		        <label for="name" class="col-sm-2 col-form-label">Usuario<span>*</span></label>
 		        <div class="col-sm-10">
-		           <input type="text" name="usuario" class="form-control" #usuario="ngModel" [(ngModel)] = "user.usuario" required="" pattern="[a-zA-Z]+">
+		           <input type="text"  name="usuario" class="form-control" #usuario="ngModel" [(ngModel)] = "user.usuario" required="" pattern="[a-zA-Z]+">
 
 		            <small *ngIf="!usuario.valid && usuario.touched" class="invalid-feedback d-block">
 		             El usuario no es valido
@@ -23,20 +62,19 @@
 		        </div>
 	          </div>
 	          <div class="form-group row">
-		        <label for="name" class="col-sm-2 col-form-label">Rol</label>
+		        <label for="name" class="col-sm-2 col-form-label">Rol<span>*</span></label>
 		        <div class="col-sm-10">
 		        	<select type="text" name="rol" class="form-control" #rol="ngModel" [(ngModel)] = "user.rol" required>
 		        		<option disabled="" selected=""></option>
-		        		<option value="Administrador">Administrador</option>
-		        		<option value="Estándar">Estándar</option>
+		        		<option [value]="item" *ngFor="let item of role">{{item}}</option>
 		        	</select>
 
 		        </div>
 	          </div>
 	          <div class="form-group row">
-		        <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+		        <label for="name" class="col-sm-2 col-form-label">Nombre<span>*</span></label>
 		        <div class="col-sm-10">
-		          <input type="text" name="nombres" class="form-control" #nombres="ngModel" [(ngModel)] = "user.nombres" required="" pattern="[a-zA-Z {2,254}]+">
+		          <input type="text" name="nombres" class="form-control" #nombres="ngModel" [(ngModel)] = "user.nombres" required=""  pattern="[a-zA-Z {2,254}]+">
 
 		          <small *ngIf="!nombres.valid && nombres.touched" class="invalid-feedback d-block">
 		              El nombre no es valido
@@ -44,7 +82,7 @@
 		        </div>
 	          </div>
 	          <div class="form-group row">
-		         <label for="name" class="col-sm-2 col-form-label">Apellidos</label>
+		         <label for="name" class="col-sm-2 col-form-label">Apellidos<span>*</span></label>
 		         <div class="col-sm-10">
 		          <input type="text" name="apellidos" class="form-control"  #apellidos="ngModel" [(ngModel)] = "user.apellidos" required="" pattern="[a-zA-Z {2,254}]+">
 
@@ -54,7 +92,7 @@
 		       </div>
 	          </div>
 	          <div class="form-group row">
-		        <label for="email" class="col-sm-2 col-form-label">Correo</label>
+		        <label for="email" class="col-sm-2 col-form-label">Correo<span>*</span></label>
 		        <div class="col-sm-10">
 		          <input type="email" name="correo" class="form-control" #correo="ngModel" [(ngModel)] = "user.correo" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 
@@ -64,7 +102,7 @@
 		       </div>
 	          </div>
 	          <div class="form-group row">
-		        <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+		        <label for="password" class="col-sm-2 col-form-label">Contraseña<span>*</span></label>
 		        <div class="col-sm-10">
 		          <input type="password" name="password" class="form-control"  #password="ngModel" [(ngModel)] = "user.password" required="">
 
@@ -74,7 +112,7 @@
 		        </div>
 	          </div>
 	
-	          <input type="submit" value="Registrarme" class="btn btn-primary mb-2" style="background-color: #e3f2fd; color: #000;" [disabled] ="registerForm.invalid">
+	          <input type="submit" value="Registrarme" class="btn btn-primary mb-2 btn-a" style="background-color: #e3f2fd; color: #000;" [disabled] ="registerForm.invalid">
 
         </form>
 
@@ -82,7 +120,18 @@
          </div>
       </div>
    </div>
+</div>
+<footer>
+  <div class="container-footer">
+  <div>
+    
+  </div>
+  <div class="parrafo">
+    <p class="footer">Todos lo derechos reservados ASIC 2020</p>
+  </div>
+  </div>
 
+</footer>
 
 
 

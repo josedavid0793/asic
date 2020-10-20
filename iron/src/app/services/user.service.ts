@@ -18,9 +18,9 @@ import {global} from './global';
 
   	}
 
-  	test(){
+  	/*test(){
   		return"Hola mundo";
-  }
+  }*/
   register (user):Observable<any>{
   	let json=JSON.stringify(user);
   	let params = 'json='+json;
@@ -62,6 +62,7 @@ import {global} from './global';
      }
      return this.token;
   }
-   
+
+
 
    }

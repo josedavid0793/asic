@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 import {HttpClientModule,} from '@angular/common/http';
 import {routing, appRoutingProviders} from './app.routing';
 
@@ -9,8 +10,15 @@ import { RegisterComponent } from './componentes/register/register.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { ErrorComponent } from './componentes/error/error.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
-import { RequestResetComponent } from './componentes/password/request-reset/request-reset.component';
+import { RequestResetComponent } from './componentes/request-reset/request-reset.component';
 import { ResponseResetComponent } from './componentes/password/response-reset/response-reset.component';
+import { HostComponent } from './componentes/host/host.component';
+import { ServicesComponent } from './componentes/services/services.component';
+import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { VistaHostComponent } from './componentes/vista-host/vista-host.component';
+import { HostupadateComponent } from './componentes/hostupadate/hostupadate.component';
+
+
 
 @NgModule({
   declarations: [
@@ -19,14 +27,21 @@ import { ResponseResetComponent } from './componentes/password/response-reset/re
     LoginComponent,
     ErrorComponent,
     InicioComponent,
+    ResponseResetComponent,
     RequestResetComponent,
-    ResponseResetComponent
+    HostComponent,
+    ServicesComponent,
+    ClientesComponent,
+    VistaHostComponent,
+    HostupadateComponent,
+
   ],
   imports: [
     BrowserModule,
     routing,
     FormsModule,
     HttpClientModule,
+    NgSelectModule
   ],
   providers: [
     appRoutingProviders

@@ -22,7 +22,7 @@ class UsuarioController extends Controller
          'nombres'     => 'required|regex:/^[\pL\s\-]+$/u',
          'apellidos'   => 'required|regex:/^[\pL\s\-]+$/u',
          'correo'      => 'required|email|unique:users',//unique comprueba si existe el usuario
-         'password'   => 'required',
+         'password'    => 'required',
          'rol'         =>'required',
      ]);
         	if($validate->fails()){
