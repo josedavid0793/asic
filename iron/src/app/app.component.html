@@ -338,7 +338,11 @@
       </li>
     </ul>
     <!--Fin de UL de Login-->
-    
+    <ul class="navbar-nav navbar-right" *ngIf="identity && identity.usuario">
+      <li class="nav-item active li-asic">
+        <a class="nav-link" [routerLink]="['/especialistas']">Especialistas</a>
+      </li>
+    </ul>
     <ul class="navbar-nav navbar-right" *ngIf="identity && identity.usuario">
       <li class="nav-item active li-asic">
         <a class="nav-link" [routerLink]="['/client']">Clientes</a>
