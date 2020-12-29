@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {HttpClient,HttpResponse} from '@angular/common/http';
 import {Especialistas} from '../../interfaces/especialistas';
+import {Gerentes_proyectos} from '../../interfaces/gerentes_proyectos';
 import {EspecialistasService} from '../../services/especialistas.service';
 import {global} from '../../services/global';
 
@@ -26,10 +27,13 @@ export class EspecialistasComponent implements OnInit {
     es_especialidad : '',
 
  };
+
+ 
   public response:string;
   constructor(private _EspecialistasService: EspecialistasService,private activatedRoute: ActivatedRoute) {
       this.titulo ='Especialistas';
       this.getEspecialistas();
+      
    }
 
   ngOnInit(): void {
@@ -51,5 +55,8 @@ export class EspecialistasComponent implements OnInit {
 
  
   }
+
+
+  
 
 }

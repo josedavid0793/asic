@@ -15,6 +15,7 @@ import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { VistaHostComponent } from './componentes/vista-host/vista-host.component';
 import { HostupadateComponent } from './componentes/hostupadate/hostupadate.component';
 import { EspecialistasComponent } from './componentes/especialistas/especialistas.component';
+import { GerentesComponent } from './componentes/gerentes/gerentes.component';
 
 
 
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
            {path: 'viewhost', component: VistaHostComponent},
            {path: 'hostExport', component: VistaHostComponent},
            {path: 'especialistas', component: EspecialistasComponent},
+           {path: 'gerentes', component: GerentesComponent},
            {path: '**', component: ErrorComponent},
            
 

@@ -1,0 +1,34 @@
+<div class="container">
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombres</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Cel.Empresa</th>
+      <th scope="col">Cel.Personal</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Centro costo</th>
+    </tr>
+  </thead>
+    <tbody>
+    <tr *ngFor='let gerentes_proyectos of response'><!---->
+      <th scope="row">{{gerentes_proyectos.gp_id}}</th>
+      <td>{{gerentes_proyectos.gp_nombres}}</td>
+      <td>{{gerentes_proyectos.gp_apellidos}}</td>
+      <td>{{gerentes_proyectos.gp_correo}}</td>
+      <td>{{gerentes_proyectos.gp_celular_coorporativo}}</td>
+      <td>{{gerentes_proyectos.gp_celular_personal}}</td>
+      <td>{{gerentes_proyectos.gp_cliente}}</td>
+      <td>{{gerentes_proyectos.gp_centro_costos}}</td>
+      <!-- <td> -->
+        <!-- <a class="btn btn-danger btn-de" (click)="deleteHost(host_clientes.id)">Eliminar</a> -->
+        <!-- <a  class="btn btn-warning btn-up" routerLink="/hostupdate/{{host_clientes.id}}">Actualizar</a> -->
+        
+      <!-- </td> -->
+    </tr>
+  </tbody>
+
+ </table>
+</div>

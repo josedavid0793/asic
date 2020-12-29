@@ -18,6 +18,7 @@ import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { VistaHostComponent } from './componentes/vista-host/vista-host.component';
 import { HostupadateComponent } from './componentes/hostupadate/hostupadate.component';
 import { EspecialistasComponent } from './componentes/especialistas/especialistas.component';
+import { GerentesComponent } from './componentes/gerentes/gerentes.component';
 
 
 
@@ -36,6 +37,7 @@ import { EspecialistasComponent } from './componentes/especialistas/especialista
     VistaHostComponent,
     HostupadateComponent,
     EspecialistasComponent,
+    GerentesComponent,
 
   ],
   imports: [

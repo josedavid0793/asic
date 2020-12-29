@@ -29,5 +29,7 @@ Route::put('/hostupdate/{id}','HostController@updateHost');
 Route::delete('/host/{id}','HostController@deleteHost');
 Route::get('/hostExport','HostController@exportHost');
 Route::get('/especialistas','especialistaController@editarEspecialista');
+Route::get('/gerentes','especialistaController@editarGerenteP');
+
 
 
