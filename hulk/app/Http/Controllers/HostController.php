@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\host_clientes;
+use App\clientes;
 use App\Exports\host_clientesExport;
 
 class HostController extends Controller
@@ -155,5 +156,12 @@ class HostController extends Controller
     public function exportHost(Request $request){
       $file = Excel::download(new host_clientesExport,'host.xlsx');
       return $file;
+    }
+
+    /*Funcion para llamar los clientes desde el front*/
+    public function editarCliente(){
+      $clientes=clientes::orderBy('nombre','ASC')->get();
+
+      return response()->json($clientes);
     }
 }

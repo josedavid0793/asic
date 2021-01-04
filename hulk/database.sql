@@ -127,6 +127,7 @@ INSERT INTO `usuarios` (`id`, `usuario`, `nombres`, `apellidos`, `correo`, `pass
 INSERT INTO `clientes` (`id`, `nombre`, `created_at`, `update_at`) VALUES (NULL, 'TERPEL', NULL, NULL), (NULL, 'FLAMINGO', NULL, NULL);
 INSERT INTO `clientes` (`id`, `nombre`, `created_at`, `update_at`) VALUES (NULL, 'MEFIA', NULL, NULL), (NULL, 'VANTI', NULL, NULL);
 INSERT INTO `clientes` (`id`, `nombre`, `created_at`, `update_at`) VALUES (NULL, 'ASNET', NULL, NULL);
+INSERT INTO `clientes` (`id`, `nombre`, `created_at`, `update_at`) VALUES (NULL, 'COMFANDI', NULL, NULL), (NULL, 'VIRTUAL RIS', NULL, NULL)
 
 /*Script de la tabla host_clientes*/
 INSERT INTO `host_clientes` (`id`, `host_name`, `ip`, `cliente`, `ambiente`, `sistema_operativo`, `escalamiento`, `notas`, `created_at`, `update_at`) VALUES (NULL, 'COLBOGSRVACL01', '10.220.0.147', 'TERPEL', 'Producción', 'Windows', 'Especialista Microsoft', NULL, NULL, NULL);
