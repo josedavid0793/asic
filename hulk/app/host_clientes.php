@@ -17,14 +17,19 @@ class host_clientes extends Model
     	return $this->belongsTo('App\clientes','host_clientes');
     }
 
-  /*  public function scopehost_name($query, $host_name) {
-    	if ($host_name) {
-    		return $query->where('host_name','like',"%$host_name%");
-    	}
+    public static function buscar($query='') {
+            if(!$query){
+                return self::all();
+            }
+            return self::where('host_name','like',"%$query%")
+            ->orWhere('ip','like',"%$query%")
+            ->orWhere('cliente','like',"%$query%")
+            ->get();
+
     }
-    public function scopeip($query, $ip) {
+   /* public function scopeip($query, $ip) {
     	if ($ip) {
-    		return $query->where('ip','like',"%$ip%");
+    		return $query->where('ip','LIKE',"%$ip%");
     	}
     }*/
     public $timestamps = false;

@@ -38,6 +38,7 @@ const appRoutes: Routes = [
            {path: 'hostExport', component: VistaHostComponent},
            {path: 'especialistas', component: EspecialistasComponent},
            {path: 'gerentes', component: GerentesComponent},
+           {path: 'buscar', component: VistaHostComponent},
            {path: '**', component: ErrorComponent},
            
 

@@ -5,6 +5,7 @@ import {Host_clientes} from '../../interfaces/host_clientes';
 import {Clientes} from '../../modelos/clientes';
 import {VistahostService} from '../../services/vistahost.service';
 import {global} from '../../services/global';
+//import { Host_clientes } from 'src/app/modelos/host_clientes';
 
 @Component({
   selector: 'app-vista-host',
@@ -15,7 +16,7 @@ import {global} from '../../services/global';
 
 
 export class VistaHostComponent implements OnInit {
-  
+  query:string='';
   public filename = 'host.xlsx';
   public titulo:string;
   public status:string;
@@ -113,6 +114,22 @@ export class VistaHostComponent implements OnInit {
    
 
     );
+  }
+  buscaHost(query:string){
+    this._VistahostService.buscaHost(this.query).subscribe(
+      response=>{
+      this.response=response;
+      //console.log(response)
+         
+      },
+      error => {
+             this.status = 'error';
+             console.log (<any>error);
+           }
+ 
+      );
+   //console.log(this.response+this.query);
+ 
   }
 
 }

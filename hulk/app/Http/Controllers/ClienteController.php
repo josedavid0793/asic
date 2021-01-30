@@ -10,13 +10,20 @@ use App\hostService_clientes;
 
 class ClienteController extends Controller
 {
-    public function buscar(Request $request){
+    public function index(Request $request){
+      /*  $json = $request->input('json',null);
+        $params = json_decode($json);
+        $params_array =json_decode($json,true);*/
+     #$host_cliente = host_clientes::host_name($request->get('host_name'))->orderBy('id','ASC');
+     #$host_name = $request->get('host_name');
+     #$ip = $request->get('ip');
+     #$host = host_clientes::orderBy("id","ASC")->host_name($host_name)->ip($ip);
+     #$host_clientes =host_clientes::host_name($host)->ip($ip)paginate(5);
 
-     $host          = $request->get('buscarpor');
-     $ip            = $request->get('buscarporip');
-     $host_clientes =host_clientes::host_name($host)->ip($ip)paginate(5);
+     #return response('host_clientes.host_name.buscar',compact('host_cliente'));
+     #return response()->json(host_clientes::search($request->busqueda));
+     return host_clientes::buscar($request->busqueda);
 
-     return compact($host_clientes);
     }
 
     public function cliente(){

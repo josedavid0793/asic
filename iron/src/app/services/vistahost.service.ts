@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Query } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -49,9 +49,21 @@ export class VistahostService {
     //peticion ajax URL
     return this._http.delete(this.url+'host/'+id,{headers: headers});//,{headers: headers} 
   }
+  /*Servicio para traer la data excel*/ 
   exportHost(uuid: string){
 
     return this._http.get<Blob>(this.url+'hostExport', { observe: 'response', responseType: 'blob' as 'json' });//,{headers: headers} {responseType: 'blob' as 'json'}
+
+  }
+
+  buscaHost(query=''){
+    
+    let json=JSON.stringify(query);
+    let params = 'json='+json;
+    //let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+                                   //peticion ajax URL
+    //return this._http.get(this.url+'buscar',{params: {busqueda:query}});
+    return this._http.get(this.url+'buscar',{params: {busqueda:query}});
 
   }
 

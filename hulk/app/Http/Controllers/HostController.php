@@ -76,7 +76,7 @@ class HostController extends Controller
     }
 
     public function editarHost(){
-      $hostclientes=host_clientes::get();
+      $hostclientes=host_clientes::orderBy('cliente','ASC')->get();
 
       return response()->json($hostclientes);
     }
