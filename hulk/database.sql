@@ -405,7 +405,7 @@ INSERT INTO `host_clientes` VALUES (NULL, 'DANNCBU', '10.202.20.45', 'DANN', 'Pr
 INSERT INTO `host_clientes` VALUES (NULL, 'DANN_HMC', '10.202.20.43', 'DANN', 'Producción', 'Linux', NULL, NULL, NULL, NULL);
 INSERT INTO `host_clientes` VALUES (NULL, 'DANN_WIN_LETO', '10.202.20.230  ', 'DANN', 'Producción', 'Windows', NULL, 'Controlador de Dominio', NULL, NULL);
 INSERT INTO `host_clientes` VALUES (NULL, 'DANN_WIN_DIONISO', '10.202.20.235', 'DANN', 'Producción', 'Windows', NULL, 'Aplicación', NULL, NULL);
-INSERT INTO `host_clientes` VALUES (NULL, 'DANN_WIN_CERES', '10.202.20.235', 'DANN', 'Producción', 'Windows', NULL, 'Base de datos', NULL, NULL);
+INSERT INTO `host_clientes` VALUES (NULL, 'DANN_WIN_CERES', '10.202.20.150', 'DANN', 'Producción', 'Windows', NULL, 'Base de datos', NULL, NULL);
 
 /*Script de la tabla host_clientes MEFIA*/
 INSERT INTO `host_clientes` VALUES (NULL, 'AP08CMPROD.flamingo.com.co:7003', '172.16.231.198', 'MEFIA', 'Producción', 'Linux', NULL, NULL, NULL, NULL);
@@ -534,6 +534,7 @@ INSERT INTO `host_clientes` VALUES (NULL, 'UPRA_SRVNPPORTALBD1', '10.10.151.30',
 INSERT INTO `host_clientes` VALUES (NULL, 'UPRA_SRVNPSIPRAAPP0', '10.10.151.38', 'UPRA', 'Producción', 'Linux', NULL, NULL, NULL, NULL);
 INSERT INTO `host_clientes` VALUES (NULL, 'UPRA_SRVNPSIPRABD0', '10.10.151.39', 'UPRA', 'Producción', 'Linux', NULL, NULL, NULL, NULL);
 INSERT INTO `host_clientes` VALUES (NULL, 'UPRA_SRVNPWADARC0', '10.10.151.37', 'UPRA', 'Producción', 'Linux', NULL, NULL, NULL, NULL);
+
 
 
 /*Script de la tabla especialistas*/

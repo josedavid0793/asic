@@ -4,6 +4,8 @@ import {FormsModule} from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import {HttpClientModule,} from '@angular/common/http';
 import {routing, appRoutingProviders} from './app.routing';
+import { DataTablesModule } from 'angular-datatables';
+
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './componentes/register/register.component';
@@ -38,6 +40,7 @@ import { GerentesComponent } from './componentes/gerentes/gerentes.component';
     HostupadateComponent,
     EspecialistasComponent,
     GerentesComponent,
+    
 
   ],
   imports: [
@@ -45,7 +48,8 @@ import { GerentesComponent } from './componentes/gerentes/gerentes.component';
     routing,
     FormsModule,
     HttpClientModule,
-    NgSelectModule
+    NgSelectModule,
+    DataTablesModule,
   ],
   providers: [
     appRoutingProviders

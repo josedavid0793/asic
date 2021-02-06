@@ -56,7 +56,7 @@ export class VistahostService {
 
   }
 
-  buscaHost(query=''){
+  buscaHost(query:string=''):Observable<any>{
     
     let json=JSON.stringify(query);
     let params = 'json='+json;

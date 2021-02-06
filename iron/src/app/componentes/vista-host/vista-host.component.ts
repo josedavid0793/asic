@@ -5,7 +5,15 @@ import {Host_clientes} from '../../interfaces/host_clientes';
 import {Clientes} from '../../modelos/clientes';
 import {VistahostService} from '../../services/vistahost.service';
 import {global} from '../../services/global';
+import {DataTable} from '../../class/data-table';
 //import { Host_clientes } from 'src/app/modelos/host_clientes';
+
+class DataTablesResponse {
+  data: any[];
+  draw: number;
+  recordsFiltered: number;
+  recordsTotal: number;
+}
 
 @Component({
   selector: 'app-vista-host',
@@ -16,12 +24,14 @@ import {global} from '../../services/global';
 
 
 export class VistaHostComponent implements OnInit {
-  query:string='';
+  
+  dtOptions: DataTables.Settings = {};
+
   public filename = 'host.xlsx';
   public titulo:string;
   public status:string;
   public HttpResponse:Blob;
-  hostclientes: Host_clientes;
+  hostclientes: Host_clientes[];
   public host_clientes: Host_clientes= {
     id:0,
     host_name:'',
@@ -34,20 +44,43 @@ export class VistaHostComponent implements OnInit {
 
  };
   public response:string;
-
+  public query:string;
   id: any;
   editing:boolean=false;
 
   
+ 
 
-
-  constructor(private _VistahostService: VistahostService,private activatedRoute: ActivatedRoute) {
+  constructor(private _VistahostService: VistahostService,private activatedRoute: ActivatedRoute, private http: HttpClient) {
 
   this.titulo ='Host Clientes';
     this.getHost();
   }
-  ngOnInit(){
+  ngOnInit(): void {
+    const that = this;
 
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 25,
+      serverSide: true,
+      processing: true,
+      ajax: (dataTablesParameters: any, callback) => {
+        that.http.get<DataTablesResponse>(
+            'http://localhost/asic/hulk/public/viewhost',
+             {}
+          ).subscribe(resp => {
+            that.hostclientes = resp.data;
+
+            callback({
+              recordsTotal: resp.recordsTotal,
+              recordsFiltered: resp.recordsFiltered,
+              data: []
+            });
+          });
+      },
+      columns: [{ data: 'id' }, { data: 'host_name' }, { data: 'ip' }, { data: 'cliente' }, { data: 'ambiente' }, { data: 'sistema_operativo' }, { data: 'escalamiento' }, { data: 'notas' }]
+    };
   }
 
   getHost(){
@@ -115,11 +148,11 @@ export class VistaHostComponent implements OnInit {
 
     );
   }
-  buscaHost(query:string){
+  buscaHost(){
     this._VistahostService.buscaHost(this.query).subscribe(
       response=>{
       this.response=response;
-      //console.log(response)
+      //console.log(this.response)
          
       },
       error => {

@@ -50,7 +50,7 @@
   </div>
 
 
-   <table class="table">
+   <table datatable [dtOptions]="dtOptions" class="table" id="table-pa">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -64,8 +64,8 @@
       <th scope="col" class="th-accion">Acciones</th>
     </tr>
   </thead>
-    <tbody>
-    <tr *ngFor='let host_clientes of response'><!---->
+    <tbody *ngIf="response?.length != 0">
+    <tr *ngFor='let host_clientes of response'><!--  -->
       <th scope="row">{{host_clientes.id}}</th>
       <td>{{host_clientes.host_name}}</td>
       <td>{{host_clientes.ip}}</td>
@@ -81,8 +81,20 @@
       </td>
     </tr>
   </tbody>
+  <tbody *ngIf="response?.length == 0">
+    <tr>
+      <td colspan="8" class="no-data-available">No data!</td>
+    </tr>
+  </tbody>
 
  </table>
+
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script><font></font>
+ <script>
+   $(document).ready(function(){
+      $('#table-pa').DataTable();
+   });
+ </script>
 
  
 
