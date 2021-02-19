@@ -1,19 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {HttpClient,HttpResponse} from '@angular/common/http';
+import { Subject } from 'rxjs';
 import {Host_clientes} from '../../interfaces/host_clientes';
 import {Clientes} from '../../modelos/clientes';
 import {VistahostService} from '../../services/vistahost.service';
 import {global} from '../../services/global';
 import {DataTable} from '../../class/data-table';
-//import { Host_clientes } from 'src/app/modelos/host_clientes';
 
-class DataTablesResponse {
-  data: any[];
-  draw: number;
-  recordsFiltered: number;
-  recordsTotal: number;
-}
 
 @Component({
   selector: 'app-vista-host',
@@ -23,9 +17,10 @@ class DataTablesResponse {
 })
 
 
-export class VistaHostComponent implements OnInit {
+export class VistaHostComponent implements  OnInit {
   
-  dtOptions: DataTables.Settings = {};
+  /*dtOptions: DataTables.Settings = {};OnDestroy
+  dtTrigger: Subject<any> = new Subject<any>();*/
 
   public filename = 'host.xlsx';
   public titulo:string;
@@ -43,10 +38,11 @@ export class VistaHostComponent implements OnInit {
     notas : '',
 
  };
-  public response:string;
+  public response:any;
   public query:string;
   id: any;
   editing:boolean=false;
+ 
 
   
  
@@ -56,31 +52,25 @@ export class VistaHostComponent implements OnInit {
   this.titulo ='Host Clientes';
     this.getHost();
   }
-  ngOnInit(): void {
-    const that = this;
+  ngOnInit(): void{
+   //const that = this;
 
 
-    this.dtOptions = {
+   /* this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 25,
-      serverSide: true,
-      processing: true,
-      ajax: (dataTablesParameters: any, callback) => {
-        that.http.get<DataTablesResponse>(
-            'http://localhost/asic/hulk/public/viewhost',
-             {}
-          ).subscribe(resp => {
-            that.hostclientes = resp.data;
-
-            callback({
-              recordsTotal: resp.recordsTotal,
-              recordsFiltered: resp.recordsFiltered,
-              data: []
-            });
-          });
-      },
-      columns: [{ data: 'id' }, { data: 'host_name' }, { data: 'ip' }, { data: 'cliente' }, { data: 'ambiente' }, { data: 'sistema_operativo' }, { data: 'escalamiento' }, { data: 'notas' }]
     };
+     this.http.get<host_clientes[]>('http://localhost/asic/hulk/public/viewhost')
+      .subscribe(data => {
+        this.response = (data as any).data;
+
+        // Calling the DT trigger to manually render the table
+        this.dtTrigger.next();
+      });
+  }
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();*/
   }
 
   getHost(){
@@ -98,8 +88,9 @@ export class VistaHostComponent implements OnInit {
    console.log(this.response+this.id);
  
   }
-  deleteHost(id:string){
-    this._VistahostService.deleteHost(id).subscribe(
+  deleteHost(id:string,host_name:string){
+    if (confirm("Seguro que deseas Eliminar" + " "+ host_name)) {
+      this._VistahostService.deleteHost(id,host_name).subscribe(
       response=>{
         this.id=response;
            console.log(response);
@@ -111,7 +102,8 @@ export class VistaHostComponent implements OnInit {
              }
    
 
-    );
+      );
+    }
   }
 
 

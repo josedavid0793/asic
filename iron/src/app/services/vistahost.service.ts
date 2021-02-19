@@ -43,7 +43,7 @@ export class VistahostService {
     return this._http.put(this.url+'hostupdate/'+host_clientes.id,params,{headers: headers});//,{headers: headers}
 
   }
-  deleteHost(id:string):Observable<any>{
+  deleteHost(id:string,host_name:string):Observable<any>{
 
     let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
     //peticion ajax URL

@@ -50,7 +50,7 @@
   </div>
 
 
-   <table datatable [dtOptions]="dtOptions" class="table" id="table-pa">
+   <table  class="table"><!--datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"-->
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -75,7 +75,7 @@
       <td>{{host_clientes.escalamiento}}</td>
       <td>{{host_clientes.notas}}</td>
       <td>
-        <a class="btn btn-danger btn-de" (click)="deleteHost(host_clientes.id)">Eliminar</a>
+        <a class="btn btn-danger btn-de" (click)="deleteHost(host_clientes.id,host_clientes.host_name)">Eliminar</a>
         <a  class="btn btn-warning btn-up" routerLink="/hostupdate/{{host_clientes.id}}">Actualizar</a>
         
       </td>
@@ -88,13 +88,6 @@
   </tbody>
 
  </table>
-
- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script><font></font>
- <script>
-   $(document).ready(function(){
-      $('#table-pa').DataTable();
-   });
- </script>
 
  
 

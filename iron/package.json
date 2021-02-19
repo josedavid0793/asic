@@ -26,8 +26,8 @@
     "datatables.net": "^1.10.23",
     "datatables.net-dt": "^1.10.23",
     "datatables.net-jqui": "^1.10.23",
-    "jquery": "3.5.1",
-    "rxjs": "~6.4.0",
+    "jquery": "^3.5.1",
+    "rxjs": "^6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
