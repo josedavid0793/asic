@@ -1,64 +1,102 @@
 <style type="text/css">
-  nav{
-  	display: flex;
+  nav {
+    display: flex;
   }
   nav ul li {
-list-style: none;
-display: inline-block;
-position: relative;
-float: left;
-right: 20%;
-margin: 0px 0px 0px 10px;
-}
-    .btn-gp{
-     color: #fff;
-     background-color: #DC7633;
-     border-color: #DC7633;
-    }
-    .btn-de{
-    margin-right:3px;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    float: left;
+    right: 20%;
+    margin: 0px 0px 0px 10px;
   }
-    
-
+  .btn-gp {
+    color: #fff;
+    background-color: #dc7633;
+    border-color: #dc7633;
+  }
+  .btn-de {
+    margin-right: 3px;
+  }
+  .div-re2 {
+    background: white !important;
+    border-radius: 20px;
+    display: flex;
+    width: 90%;
+    height: 98%;
+    margin-top: 5px;
+    position: relative;
+  }
+  .div-es{
+    width: 100%;
+  }
+  .div-pr{
+    display: flex;
+    justify-content: space-around;
+  }
+  p{
+    text-align: center;
+    font-size: 24px;
+  }
 </style>
-<div class="container">
-	<p>{{titulo}}</p>
-	<nav>
-		<ul>
-			<li><a class="btn btn-success btn-de"  href="https://asicsa-my.sharepoint.com/:x:/r/personal/dfgomez_asicamericas_com/_layouts/15/Doc.aspx?sourcedoc=%7B7fb39c9d-3d85-49fe-9f0f-d2e9892d9ce6%7D&action=view&activeCell=%27CONTACTOS%27!B24&wdrcid=a000533e-bc66-4e32-b7d6-d3564592029b&wdrldc=1" target="_blank">Malla</a></li>
-			<li><a class="btn btn-gp btn-de"  [routerLink]="['/gerentes']" target="_blank">Gerentes</a></li>
-		</ul>
-	</nav>
- <table class="table table-striped table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nombres</th>
-      <th scope="col">Apellidos</th>
-      <th scope="col">Correo</th>
-      <th scope="col">Cel.Empresa</th>
-      <th scope="col">Cel.Personal</th>
-      <th scope="col">Especialidad</th>
-    </tr>
-  </thead>
-    <tbody>
-    <tr *ngFor='let especialistas of response'><!---->
-      <th scope="row">{{especialistas.es_id}}</th>
-      <td>{{especialistas.es_nombres}}</td>
-      <td>{{especialistas.es_apellidos}}</td>
-      <td>{{especialistas.es_correo}}</td>
-      <td>{{especialistas.es_celular_coorporativo}}</td>
-      <td>{{especialistas.es_celular_personal}}</td>
-      <td>{{especialistas.es_especialidad}}</td>
-      <!-- <td> -->
-        <!-- <a class="btn btn-danger btn-de" (click)="deleteHost(host_clientes.id)">Eliminar</a> -->
-        <!-- <a  class="btn btn-warning btn-up" routerLink="/hostupdate/{{host_clientes.id}}">Actualizar</a> -->
-        
-      <!-- </td> -->
-    </tr>
-  </tbody>
-
- </table>
-
+<div class="container-fluid div-re2">
+  <p>{{ titulo }}</p>
+  <div class="div-pr row">
+    <div class="div-es col-12">
+      <nav>
+        <ul>
+          <li>
+            <a
+              class="btn btn-success btn-de"
+              href="https://asicsa-my.sharepoint.com/:x:/r/personal/dfgomez_asicamericas_com/_layouts/15/Doc.aspx?sourcedoc=%7B7fb39c9d-3d85-49fe-9f0f-d2e9892d9ce6%7D&action=view&activeCell=%27CONTACTOS%27!B24&wdrcid=a000533e-bc66-4e32-b7d6-d3564592029b&wdrldc=1"
+              target="_blank"
+              >Malla</a
+            >
+          </li>
+          <li>
+            <a
+              class="btn btn-gp btn-de"
+              [routerLink]="['/gerentes']"
+              target="_blank"
+              >Gerentes</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+   <div class="col-12">
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Cel.Empresa</th>
+          <th scope="col">Cel.Personal</th>
+          <th scope="col">Especialidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let especialistas of response">
+          <!---->
+          <th scope="row">{{ especialistas.es_id }}</th>
+          <td>{{ especialistas.es_nombres }}</td>
+          <td>{{ especialistas.es_apellidos }}</td>
+          <td>{{ especialistas.es_correo }}</td>
+          <td>{{ especialistas.es_celular_coorporativo }}</td>
+          <td>{{ especialistas.es_celular_personal }}</td>
+          <td>{{ especialistas.es_especialidad }}</td>
+          <!-- <td> -->
+          <!-- <a class="btn btn-danger btn-de" (click)="deleteHost(host_clientes.id)">Eliminar</a> -->
+          <!-- <a  class="btn btn-warning btn-up" routerLink="/hostupdate/{{host_clientes.id}}">Actualizar</a> -->
+  
+          <!-- </td> -->
+        </tr>
+      </tbody>
+    </table>
+   </div>
+    
+  </div>
+  
 </div>
-

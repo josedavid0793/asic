@@ -1,119 +1,185 @@
 <style type="text/css">
-	.btn-a{
-	margin-left: 35%;
+  .btn-a {
+    margin-left: 35%;
     width: 50%;
     padding: 12px;
-	}
-	.title-asic{
+  }
+  .title-asic {
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
-	}
-  .container-fondo{
-    background: #FBFCFC;
   }
-  span{
+  .container-fondo {
+    background: #fbfcfc;
+  }
+  span {
     color: red;
     margin-left: 4px;
   }
-  footer{
-    background: #4D5656;
+  footer {
+    background: #4d5656;
     padding: 20px 0;
     margin-top: 25px;
     text-align: center;
     width: 100%;
   }
-  footer .container-footer{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  footer .container-footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
-  footer p{
-  color: #fff;
-  margin-top: 40px;
-
-   }
-
+  footer p {
+    color: #fff;
+    margin-top: 40px;
+  }
+  .div-re2 {
+    border-radius: 20px;
+    display: flex;
+    width: 90%;
+    height: 98%;
+    margin-top: 5px;
+    position: relative;
+  }
 </style>
-<div class="container-fondo">
+<div class="container-fondo container-fluid div-re2">
+  <div class="mt-4 col-8 offset-2 fondo-host">
+    <div class="card">
+      <div class="card-header title-asic">{{ titulo }}</div>
+      <div class="card-body">
+        <!--<p  *ngIf="status != 'success'">Registrar usuario</p>-->
 
-<div class="mt-4 col-8 offset-2 fondo-host">
-   <div class="card">
-     <div class="card-header title-asic">{{titulo}}</div>
-         <div class="card-body">
-             <!--<p  *ngIf="status != 'success'">Registrar usuario</p>-->
-
-             <div class="alert alert-success col-md-5" *ngIf="status == 'success'">
-             El Ingreso se ha completado correctamente.<a [routerLink] ="['/login']">Ingresa aquí.</a>
-             </div>
-             <div class="alert alert-danger col-md-5" *ngIf="status == 'error'">
-             El ingreso no se ha completado correctamente, intentalo de nuevo.
-             </div>
-<form #hostForm="ngForm" (ngSubmit)="onSubmit(hostForm)">
-
-  <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Host<span>*</span></label>
-      <div class="col-sm-10">
-          <input class="form-control input-a" type="text" name="host_name" #host_name="ngModel" [(ngModel)] = "host_clientes.host_name" required="" ng-pattern="/^[a-zA-Z0-9\_\- ]*$/">
-      </div>
-   </div>
-   <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">IP<span>*</span></label>
-      <div class="col-sm-10">
-        <input class="form-control input-a" type="text" name="ip" #ip="ngModel" [(ngModel)] = "host_clientes.ip" required="">
-      </div>
-   </div>
-   <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Cliente<span>*</span></label>
-      <div class="col-sm-10">
-         <select class="form-control input-a" type="text" name="cliente" #cliente="ngModel" [(ngModel)] = "host_clientes.cliente" required="">
-            <option disabled="" selected=""></option>
-            <option [value]="item" *ngFor="let item of clientes">{{item}}</option>
-         </select>
+        <div class="alert alert-success col-md-5" *ngIf="status == 'success'">
+          El Ingreso se ha completado correctamente.<a [routerLink]="['/login']"
+            >Ingresa aquí.</a
+          >
+        </div>
+        <div class="alert alert-danger col-md-5" *ngIf="status == 'error'">
+          El ingreso no se ha completado correctamente, intentalo de nuevo.
+        </div>
+        <form #hostForm="ngForm" (ngSubmit)="onSubmit(hostForm)">
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Host<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                class="form-control input-a"
+                type="text"
+                name="host_name"
+                #host_name="ngModel"
+                [(ngModel)]="host_clientes.host_name"
+                required=""
+                ng-pattern="/^[a-zA-Z0-9\_\- ]*$/"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >IP<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                class="form-control input-a"
+                type="text"
+                name="ip"
+                #ip="ngModel"
+                [(ngModel)]="host_clientes.ip"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Cliente<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <select
+                class="form-control input-a"
+                type="text"
+                name="cliente"
+                #cliente="ngModel"
+                [(ngModel)]="host_clientes.cliente"
+                required=""
+              >
+                <option disabled="" selected=""></option>
+                <option [value]="item" *ngFor="let item of clientes">
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Ambiente<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                class="form-control input-a"
+                type="text"
+                name="ambiente"
+                #ambiente="ngModel"
+                [(ngModel)]="host_clientes.ambiente"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Sistema Operativo<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                class="form-control input-a"
+                type="text"
+                name="sistema_operativo"
+                #sistema_operativo="ngModel"
+                [(ngModel)]="host_clientes.sistema_operativo"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Escalamiento</label
+            >
+            <div class="col-sm-10">
+              <textarea
+                class="form-control"
+                name="escalamiento"
+                #escalamiento="ngModel"
+                [(ngModel)]="host_clientes.escalamiento"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Notas</label>
+            <div class="col-sm-10">
+              <textarea
+                class="form-control"
+                name="notas"
+                #notas="ngModel"
+                [(ngModel)]="host_clientes.notas"
+              ></textarea>
+            </div>
+          </div>
+          <input
+            type="submit"
+            value="Agregar"
+            class="btn btn-primary mb-2 btn-a"
+            style="background-color: #e3f2fd; color: #000"
+            [disabled]="hostForm.invalid"
+          />
+        </form>
       </div>
     </div>
-    <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Ambiente<span>*</span></label>
-      <div class="col-sm-10">
-         <input class="form-control input-a" type="text" name="ambiente" #ambiente="ngModel" [(ngModel)] = "host_clientes.ambiente" required="">
-      </div>
-   </div>
-    <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Sistema Operativo<span>*</span></label>
-      <div class="col-sm-10">
-        <input class="form-control input-a" type="text" name="sistema_operativo" #sistema_operativo="ngModel" [(ngModel)] = "host_clientes.sistema_operativo" required="">
-      </div>
-   </div>
-    <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Escalamiento</label>
-      <div class="col-sm-10">
-        <textarea class="form-control" name="escalamiento" #escalamiento="ngModel" [(ngModel)] = "host_clientes.escalamiento"></textarea>
-      </div>
-   </div>
-    <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Notas</label>
-      <div class="col-sm-10">
-         <textarea class="form-control" name="notas" #notas="ngModel" [(ngModel)] = "host_clientes.notas"></textarea>
-      </div>
-   </div>
-<input type="submit" value="Agregar" class="btn btn-primary mb-2 btn-a" style="background-color: #e3f2fd; color: #000;" [disabled] ="hostForm.invalid">
-
-</form>
-
-     </div>
-      </div>
-   </div>
-  
+  </div>
 </div>
 <footer>
   <div class="container-footer">
-  <div>
-    
+    <div></div>
+    <div class="parrafo">
+      <p class="footer">Todos lo derechos reservados ASIC 2020</p>
+    </div>
   </div>
-  <div class="parrafo">
-    <p class="footer">Todos lo derechos reservados ASIC 2020</p>
-  </div>
-  </div>
-
 </footer>

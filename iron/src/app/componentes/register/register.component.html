@@ -1,138 +1,221 @@
 <style type="text/css">
-	.btn-a{
-	margin-left: 35%;
+  .btn-a {
+    margin-left: 35%;
     width: 50%;
     padding: 12px;
-	}
-	.title-asic{
+  }
+  .title-asic {
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
-	}
-	.container-fondo{
-    background: #FBFCFC;
   }
-  span{
+  .container-fondo {
+    background: #fbfcfc;
+  }
+  span {
     color: red;
     margin-left: 4px;
   }
-  footer{
-    background: #4D5656;
+  footer {
+    background: #4d5656;
     padding: 20px 0;
     margin-top: 25px;
     text-align: center;
     width: 100%;
   }
-  footer .container-footer{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  footer .container-footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
-  footer p{
-  color: #fff;
-  margin-top: 40px;
-
-   }
+  footer p {
+    color: #fff;
+    margin-top: 40px;
+  }
+  .div-re{
+	  border-radius: 20px;
+	  display: flex;
+	  width: 90%;
+	  height: 90%;
+	  margin-top: 5px;
+	  position: relative;
+  }
+  .div-2{
+	  margin-top: 0px;
+  }
 </style>
 
-<div class="container-fondo">
-<div class="mt-4 col-8 offset-2">
-   <div class="card">
-     <div class="card-header title-asic">{{titulo}}</div>
-         <div class="card-body">
-             <!--<p  *ngIf="status != 'success'">Registrar usuario</p>-->
+<div class="container-fondo container-fluid div-re">
+  <div class="mt-4 col-8 offset-2">
+    <div class="card div-2">
+      <div class="card-header title-asic">{{ titulo }}</div>
+      <div class="card-body">
+        <!--<p  *ngIf="status != 'success'">Registrar usuario</p>-->
 
-             <div class="alert alert-success col-md-5" *ngIf="status == 'success'">
-	           El registro se ha completado correctamente.<a [routerLink] ="['/login']">Ingresa aquí.</a>
-             </div>
-             <div class="alert alert-danger col-md-5" *ngIf="status == 'error'">
-	           El registro no se ha completado correctamente, intentalo de nuevo.
-             </div>
+        <div class="alert alert-success col-md-5" *ngIf="status == 'success'">
+          El registro se ha completado correctamente.<a
+            [routerLink]="['/login']"
+            >Ingresa aquí.</a
+          >
+        </div>
+        <div class="alert alert-danger col-md-5" *ngIf="status == 'error'">
+          El registro no se ha completado correctamente, intentalo de nuevo.
+        </div>
 
-            <form  #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-	          <div class="form-group row">
-		        <label for="name" class="col-sm-2 col-form-label">Usuario<span>*</span></label>
-		        <div class="col-sm-10">
-		           <input type="text"  name="usuario" class="form-control" #usuario="ngModel" [(ngModel)] = "user.usuario" required="" pattern="[a-zA-Z]+">
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Usuario<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                name="usuario"
+                class="form-control"
+                #usuario="ngModel"
+                [(ngModel)]="user.usuario"
+                required=""
+                pattern="[a-zA-Z]+"
+              />
 
-		            <small *ngIf="!usuario.valid && usuario.touched" class="invalid-feedback d-block">
-		             El usuario no es valido
-		            </small>
-		        </div>
-	          </div>
-	          <div class="form-group row">
-		        <label for="name" class="col-sm-2 col-form-label">Rol<span>*</span></label>
-		        <div class="col-sm-10">
-		        	<select type="text" name="rol" class="form-control" #rol="ngModel" [(ngModel)] = "user.rol" required>
-		        		<option disabled="" selected=""></option>
-		        		<option [value]="item" *ngFor="let item of role">{{item}}</option>
-		        	</select>
+              <small
+                *ngIf="!usuario.valid && usuario.touched"
+                class="invalid-feedback d-block"
+              >
+                El usuario no es valido
+              </small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Rol<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <select
+                type="text"
+                name="rol"
+                class="form-control"
+                #rol="ngModel"
+                [(ngModel)]="user.rol"
+                required
+              >
+                <option disabled="" selected=""></option>
+                <option [value]="item" *ngFor="let item of role">
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Nombre<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                name="nombres"
+                class="form-control"
+                #nombres="ngModel"
+                [(ngModel)]="user.nombres"
+                required=""
+                pattern="[a-zA-Z {2,254}]+"
+              />
 
-		        </div>
-	          </div>
-	          <div class="form-group row">
-		        <label for="name" class="col-sm-2 col-form-label">Nombre<span>*</span></label>
-		        <div class="col-sm-10">
-		          <input type="text" name="nombres" class="form-control" #nombres="ngModel" [(ngModel)] = "user.nombres" required=""  pattern="[a-zA-Z {2,254}]+">
+              <small
+                *ngIf="!nombres.valid && nombres.touched"
+                class="invalid-feedback d-block"
+              >
+                El nombre no es valido
+              </small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label"
+              >Apellidos<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                name="apellidos"
+                class="form-control"
+                #apellidos="ngModel"
+                [(ngModel)]="user.apellidos"
+                required=""
+                pattern="[a-zA-Z {2,254}]+"
+              />
 
-		          <small *ngIf="!nombres.valid && nombres.touched" class="invalid-feedback d-block">
-		              El nombre no es valido
-		          </small>
-		        </div>
-	          </div>
-	          <div class="form-group row">
-		         <label for="name" class="col-sm-2 col-form-label">Apellidos<span>*</span></label>
-		         <div class="col-sm-10">
-		          <input type="text" name="apellidos" class="form-control"  #apellidos="ngModel" [(ngModel)] = "user.apellidos" required="" pattern="[a-zA-Z {2,254}]+">
+              <small
+                *ngIf="!apellidos.valid && apellidos.touched"
+                class="invalid-feedback d-block"
+              >
+                Los apellidos no son validos
+              </small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label"
+              >Correo<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                type="email"
+                name="correo"
+                class="form-control"
+                #correo="ngModel"
+                [(ngModel)]="user.correo"
+                required=""
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              />
 
-		          <small *ngIf="!apellidos.valid && apellidos.touched" class="invalid-feedback d-block">
-		             Los apellidos no son validos
-		          </small>
-		       </div>
-	          </div>
-	          <div class="form-group row">
-		        <label for="email" class="col-sm-2 col-form-label">Correo<span>*</span></label>
-		        <div class="col-sm-10">
-		          <input type="email" name="correo" class="form-control" #correo="ngModel" [(ngModel)] = "user.correo" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+              <small
+                *ngIf="!correo.valid && correo.touched"
+                class="invalid-feedback d-block"
+              >
+                El correo no es válido
+              </small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label"
+              >Contraseña<span>*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                #password="ngModel"
+                [(ngModel)]="user.password"
+                required=""
+              />
 
-		           <small *ngIf="!correo.valid && correo.touched" class="invalid-feedback d-block">
-		            El correo no es válido
-		           </small>
-		       </div>
-	          </div>
-	          <div class="form-group row">
-		        <label for="password" class="col-sm-2 col-form-label">Contraseña<span>*</span></label>
-		        <div class="col-sm-10">
-		          <input type="password" name="password" class="form-control"  #password="ngModel" [(ngModel)] = "user.password" required="">
+              <small
+                *ngIf="!password.valid && password.touched"
+                class="invalid-feedback d-block"
+              >
+                La contraseña no es válida
+              </small>
+            </div>
+          </div>
 
-		          <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
-		           La contraseña no es válida
-		          </small>
-		        </div>
-	          </div>
-	
-	          <input type="submit" value="Registrarme" class="btn btn-primary mb-2 btn-a" style="background-color: #e3f2fd; color: #000;" [disabled] ="registerForm.invalid">
-
+          <input
+            type="submit"
+            value="Registrarme"
+            class="btn btn-primary mb-2 btn-a"
+            style="background-color: #e3f2fd; color: #000"
+            [disabled]="registerForm.invalid"
+          />
         </form>
-
-
-         </div>
       </div>
-   </div>
+    </div>
+  </div>
 </div>
 <footer>
   <div class="container-footer">
-  <div>
-    
+    <div></div>
+    <div class="parrafo">
+      <p class="footer">Todos lo derechos reservados ASIC 2020</p>
+    </div>
   </div>
-  <div class="parrafo">
-    <p class="footer">Todos lo derechos reservados ASIC 2020</p>
-  </div>
-  </div>
-
 </footer>
-
-
-
-

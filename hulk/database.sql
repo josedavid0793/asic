@@ -107,6 +107,9 @@ created_at    datetime DEFAULT NULL,
 update_at     datetime DEFAULT NULL
 )ENGINE=INNODB;
 
+/*TRIGGER DE LA BASE DE DATOS*/
+CREATE TRIGGER `delete_service_hosts` BEFORE DELETE ON `hostservice_clientes` FOR EACH ROW BEGIN IF (old.host ) THEN DELETE FROM `host_clientes` WHERE host_name = old.host; END IF; END
+
 /*ALTER TABLE PARA LAS TABLAS*/
 ALTER TABLE `hulk`.`especialistas` ADD UNIQUE `unique_email` (`es_correo`);
 ALTER TABLE `users` ADD CONSTRAINT `fk_rol_user` FOREIGN KEY (`rol`) REFERENCES `roles`(`nombre_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION;

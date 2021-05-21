@@ -2,7 +2,7 @@
 
 <style type="text/css">
 	.form-as{
-    margin-left: 73%;
+    margin-left: 70%;
     margin-bottom: 13px;
     }
   .input-ac{
@@ -36,10 +36,32 @@
   .btn-excel{
     height: 40px;
   }
+  .th-view{
+    width: 15px;
+    text-align: center;
+  }
+  .img-testigo{
+    margin-left: 10px;
+  }
+  .delete-a{
+    cursor: pointer;
+  }
+  .div-co{
+    background: white  !important;
+    width: 94%;
+    position: relative;
+    margin-left: 5%;
+    margin-top: 5px;
+    border-radius: 20px;
+  }
+  p{
+    text-align: center;
+    font-size: 24px;
+  }
 </style>
 
 
-<div class="container-fluid">
+<div class="container-fluid div-co">
   <p>{{titulo}}</p>
   <div class="div-t-table">
     <form class="form-inline form-as">
@@ -61,7 +83,7 @@
       <th scope="col">S.O</th>
       <th scope="col">Escalamiento</th>
       <th scope="col">Notas</th>
-      <th scope="col" class="th-accion">Acciones</th>
+      <th scope="col" class="th-accion th-view">Acciones</th>
     </tr>
   </thead>
     <tbody *ngIf="response?.length != 0">
@@ -75,8 +97,8 @@
       <td>{{host_clientes.escalamiento}}</td>
       <td>{{host_clientes.notas}}</td>
       <td>
-        <a class="btn btn-danger btn-de" (click)="deleteHost(host_clientes.id,host_clientes.host_name)">Eliminar</a>
-        <a  class="btn btn-warning btn-up" routerLink="/hostupdate/{{host_clientes.id}}">Actualizar</a>
+        <a class="delete-a" (click)="deleteHost(host_clientes.id,host_clientes.host_name)"><img src="/assets/img/eliminar.png"></a>
+        <a  class="" routerLink="/hostupdate/{{host_clientes.id}}"><img class="img-testigo" src="/assets/img/testigo.png"></a>
         
       </td>
     </tr>
